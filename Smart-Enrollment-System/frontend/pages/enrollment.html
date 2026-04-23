@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Analogica | Enrollments</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../css/enrollment.css">
+</head>
+
+<body>
+<div class="flex min-h-screen">
+
+  <!-- SIDEBAR (UNIFIED STYLE) -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="logo-icon">A</div>
+      <div>
+        <h1 class="text-lg font-bold">Analogica</h1>
+        <p class="text-xs opacity-80">Student Management</p>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="./AdminDashboard.html" class="nav-link">📊 Dashboard</a>
+      <a href="./enquiries.html" class="nav-link">📝 Enquiries</a>
+      <a href="./enrollment.html" class="nav-link active">🎓 Enrollments</a>
+      <a href="./emi.html" class="nav-link">💳 Monthly EMIs</a>
+      <a href="./Overdue.html" class="nav-link">⚠️ Overdue Report</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-box">
+        <div class="user-avatar">C</div>
+        <div>
+          <p class="user-name">admin</p>
+          <p class="user-email">admin123@gmail.com</p>
+        </div>
+      </div>
+      <div class="logout-section">
+       <button id="logoutBtn" class="logout-btn">
+       🚪 Logout
+  </button>
+</div>
+    </div>
+  </aside>
+
+  <!-- MAIN (UNCHANGED) -->
+  <main class="flex-1 p-8">
+
+    <div class="header">
+      <h2>Enrolled Students</h2>
+      <div class="header-actions">
+        <input id="searchInput" type="search" placeholder="Search students..." class="search-input">
+           <!-- 🔽 ADD THIS DROPDOWN HERE -->
+            <select id="paymentFilter" class="filter-select">
+              <option value="All">All Payments</option>
+              <option value="FULL">Full Payment</option>
+              <option value="EMI">EMI</option>
+            </select>
+        <button id="openModal" class="add-btn">➕ Add Student</button>
+      </div>
+    </div>
+
+    <div id="studentCards"
+         class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+    </div>
+
+  </main>
+</div>
+
+<!-- MODAL (UNCHANGED) -->
+<div id="studentModal" class="modal hidden">
+  <div class="modal-content fade-in">
+    <h3>Add Enrolled Student</h3>
+
+    <input id="name" placeholder="Student Name">
+    <input id="email" placeholder="Email">
+    <input id="phone" placeholder="Phone Number">   <!-- ✅ ADD THIS -->
+    <input id="program" placeholder="Program">
+    <input id="date" type="date">
+
+   <select id="paymentType">
+  <option value="">Select Payment Type</option>
+  <option value="FULL">Full Payment</option>
+  <option value="EMI">EMI</option>
+</select>
+
+<input
+  type="number"
+  id="amount"
+  placeholder="Enter Total Amount"
+  style="display: none;"
+/>
+
+    <input id="amount" placeholder="Total Amount" style="display:none;">
+
+
+    <div class="modal-actions">
+      <button id="closeModal" type="button">Cancel</button>
+      <button id="addStudent" type="button" class="add-btn">Add</button>
+
+    </div>
+  </div>
+</div>
+<!-- SET PAYMENT MODAL -->
+<div id="paymentModal" class="modal hidden">
+  <div class="modal-content fade-in">
+    <h3>Set Payment</h3>
+
+    <input
+      id="paymentAmount"
+      type="number"
+      placeholder="Total Amount ₹"
+    />
+
+    <div style="display:flex; gap:12px; margin-top:16px;">
+  <!-- ✅ FIXED: type="button" -->
+  <button
+    id="setFullBtn"
+    type="button"
+    class="add-btn"
+    style="flex:1;"
+  >
+    Full Payment
+  </button>
+
+  <!-- ✅ FIXED: type="button" -->
+  <button
+    id="setEmiBtn"
+    type="button"
+    class="add-btn"
+    style="flex:1; background:#0d9488;"
+  >
+    EMI Payment
+  </button>
+</div>
+
+<!-- ✅ FIXED: type="button" -->
+<button
+  id="closePaymentModal"
+  type="button"
+  style="margin-top:16px;"
+>
+  Cancel
+</button>
+
+<script src="../js/enrollment.js"></script>
+</body>
+</html>

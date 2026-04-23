@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Payment Tracking - Analogica</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="../css/emi.css">
+</head>
+
+<body class="h-screen flex overflow-hidden">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="logo-icon">A</div>
+    <div>
+      <h1 class="text-lg font-bold">Analogica</h1>
+      <p class="text-xs opacity-80">Student Management</p>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a href="../pages/AdminDashboard.html" class="nav-link">📊 Dashboard</a>
+    <a href="../pages/enquiries.html" class="nav-link">📝 Enquiries</a>
+    <a href="../pages/enrollment.html" class="nav-link">🎓 Enrollments</a>
+    <a href="../pages/emi.html" class="nav-link active">💳 Monthly EMIs</a>
+    <a href="../pages/overdue.html" class="nav-link">⚠️ Overdues</a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="user-box">
+      <div class="user-avatar">C</div>
+      <div>
+        <p class="user-name">admin</p>
+        <p class="user-email">admin123@gmail.com</p>
+      </div>
+    </div>
+    <div class="logout-section">
+  <button id="logoutBtn" class="logout-btn">
+    🚪 Logout
+  </button>
+</div>
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="flex-1 flex flex-col h-full bg-gray-50 overflow-hidden">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div>
+      <h1 class="page-title">Payment Tracking</h1>
+      <p class="page-subtitle">Monitor and manage student installments.</p>
+    </div>
+
+    <div class="header-actions">
+      <input id="searchInput" type="search" placeholder="Search student..." class="search-input">
+
+      <select id="statusFilter" class="filter-select">
+        <option value="ALL">All Statuses</option>
+        <option value="Pending">Pending</option>
+        <option value="Paid">Paid</option>
+        <option value="Overdue">Overdue</option>
+    </select>
+
+
+      <button onclick="openModal()" class="add-btn">+ Generate EMI</button>
+      <button class="download-btn" onclick="downloadEmiReport()">
+  Download EMI Report
+</button>
+
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <div class="content-scroll">
+    <div id="paymentList" class="payment-list">
+      <div class="loading-msg">Loading Payments...</div>
+    </div>
+  </div>
+</main>
+
+<!-- MODAL -->
+<div id="emiModal" class="modal hidden">
+  <div class="modal-content">
+    <h3 class="modal-title">Generate New EMI Plan</h3>
+
+    <form onsubmit="event.preventDefault(); addEMI();">
+      <div class="form-group">
+        <label>Select Student</label>
+        <select id="studentSelect" class="form-input"></select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Plan</label>
+          <select id="emiPlan" onchange="toggleCustomPlan()" class="form-input">
+            <option value="3">3 Months</option>
+            <option value="6">6 Months</option>
+            <option value="9">9 Months</option>
+            <option value="12">12 Months</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+
+        <div id="customPlanWrapper" class="form-group hidden">
+          <label>Months</label>
+          <input type="number" id="customPlan" class="form-input">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Total Amount (₹)</label>
+        <input type="number" id="amount" class="form-input">
+      </div>
+
+      <div class="form-group">
+        <label>Start Date</label>
+        <input type="date" id="dueDate" class="form-input">
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" onclick="closeModal()" class="btn-cancel">Cancel</button>
+        <button type="submit" class="btn-submit">Generate</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../js/emi.js"></script>
+</body>
+</html>

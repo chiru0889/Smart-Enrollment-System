@@ -1,0 +1,303 @@
+ANALOGICA – STUDENT MANAGEMENT SYSTEM
+Project Documentation
+
+PROJECT OVERVIEW
+
+Analogica is a web-based Student Management System developed to help educational institutes efficiently manage student operations including enquiries, enrollments, EMI payments, overdue tracking, and financial reporting.
+
+The system is built using:
+
+Flask (Backend API)
+
+MySQL (Database)
+
+HTML, CSS, JavaScript (Frontend)
+
+It provides automation for EMI plan generation and overdue detection.
+
+SYSTEM ARCHITECTURE
+
+Frontend (HTML + CSS + JavaScript)
+↓
+Flask Backend API
+↓
+SQLAlchemy ORM
+↓
+MySQL Database
+
+TECHNOLOGIES USED
+
+Backend:
+
+Python 3.10+
+
+Flask
+
+Flask-Session
+
+Flask-CORS
+
+SQLAlchemy
+
+PyMySQL
+
+ReportLab (PDF Generation)
+
+Frontend:
+
+HTML5
+
+CSS3
+
+Tailwind CSS
+
+JavaScript (Fetch API)
+
+Database:
+
+MySQL
+
+SYSTEM REQUIREMENTS
+
+Make sure your system has:
+
+Python 3.10 or higher
+
+MySQL Server installed
+
+pip (Python package manager)
+
+Git (optional)
+
+DATABASE SETUP (MySQL)
+
+Step 1: Open MySQL and create database
+
+CREATE DATABASE certisured_db;
+USE certisured_db;
+
+Step 2: If using SQLAlchemy, tables will auto-create when running app.
+
+Step 3: Add EMI months column (Important update)
+
+ALTER TABLE enrollment ADD COLUMN emi_months INT DEFAULT 0;
+
+Step 4: Verify tables
+
+USE certisured_db;
+
+SELECT * FROM emi;
+SELECT * FROM enquiry WHERE status = 'Enquiry';
+SELECT id, name, payment_type, amount FROM enrollment;
+
+To check overdue students:
+
+SELECT e.enrollment_id, e.emi_no, e.status
+FROM emi e
+JOIN enrollment en ON e.enrollment_id = en.id
+WHERE e.status = 'Overdue';
+
+PROJECT INSTALLATION GUIDE
+
+Step 1: Clone Project
+
+git clone https://github.com/yourusername/analogica-student-management.git
+
+cd analogica-student-management/backend
+
+Step 2: Create Virtual Environment
+
+python -m venv venv
+venv\Scripts\activate (Windows)
+
+Step 3: Install Required Packages
+
+pip install flask flask-session flask-cors flask-sqlalchemy pymysql reportlab
+
+Step 4: Configure Database Connection in app.py
+
+app.config["SQLALCHEMY_DATABASE_URI"] =
+"mysql+pymysql://root:yourpassword@localhost/certisured_db"
+
+Replace:
+
+root → your MySQL username
+
+yourpassword → your MySQL password
+
+Step 5: Run Application
+
+python app.py
+
+Open browser and go to:
+
+http://127.0.0.1:5000
+
+AUTHENTICATION SYSTEM
+
+Admin login system
+
+Session-based authentication
+
+Protected API routes
+
+Logout functionality
+
+ENQUIRY MODULE
+
+Features:
+
+Add enquiry manually
+
+Upload CSV file
+
+Import Google Sheet data
+
+Duplicate phone validation
+
+Status tracking (Enquiry / Converted)
+
+ENROLLMENT MODULE
+
+Convert enquiry to enrollment
+
+Choose payment type:
+
+Full Payment
+
+EMI
+
+Store student details
+
+Track enrollment status
+
+EMI MANAGEMENT SYSTEM
+
+Features:
+
+Generate EMI plan
+
+Automatic monthly due date generation
+
+Mark EMI as Paid
+
+Undo payment
+
+Track paid date
+
+Store number of EMI months
+
+Integrated dashboard tracking
+
+EMI Logic:
+
+EMI amount = total amount / months
+
+Due dates generated monthly using date increment logic
+
+OVERDUE SYSTEM
+
+Automatic overdue detection:
+
+If due_date < today AND status != "Paid"
+→ Mark EMI as "Overdue"
+
+Fine Calculation:
+Fine = ₹50 × number_of_days_overdue
+
+Features:
+
+Overdue list page
+
+Overdue summary
+
+Overdue PDF report
+
+DASHBOARD MODULE
+
+Displays:
+
+Total enrollments
+
+Active students
+
+EMI students
+
+Overdue students
+
+Recent enrollments
+
+Financial summary
+
+REPORT GENERATION
+
+Reports generated using ReportLab:
+
+Student Payment Report (PDF)
+
+EMI Report
+
+Overdue Report
+
+Dashboard Summary
+
+API ENDPOINTS
+
+Authentication:
+POST /api/login
+POST /api/logout
+GET /api/protected
+
+Enrollment:
+GET /api/enrollments
+GET /api/student/<id>
+
+EMI:
+POST /api/emi/generate
+GET /api/emi
+POST /api/emi/pay
+POST /api/emi/undo
+
+KEY LEARNING OUTCOMES
+
+Through this project, we implemented:
+
+Full Stack Web Development
+
+REST API Design
+
+MySQL Database Integration
+
+Session-based Authentication
+
+EMI Financial Logic
+
+Overdue Automation
+
+PDF Report Generation
+
+Debugging MySQL Schema Issues
+
+Database Schema Modification
+
+FUTURE ENHANCEMENTS
+
+Automatic email reminder system
+
+Role-based authentication (Admin / Accountant)
+
+Payment gateway integration
+
+AI-based EMI risk prediction
+
+Cloud deployment (AWS)
+
+Docker containerization
+
+Advanced analytics dashboard
+
+CONCLUSION
+
+Analogica Student Management System provides a complete solution for managing student enquiries, enrollments, EMI payments, and overdue tracking.
+
+It demonstrates backend API development, database management, financial automation logic, and real-world debugging practices.

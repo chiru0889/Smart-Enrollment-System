@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Login | Analogica</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/admin-login.css">
+</head>
+
+<body>
+
+<div class="login-wrapper">
+  <div class="login-card">
+
+    <div class="brand-panel">
+      <div class="brand-content">
+        <div class="brand-logo">A</div>
+        <h1>Analogica</h1>
+        <p>Advanced Student Management System</p>
+      </div>
+    </div>
+
+    <div class="form-panel">
+
+  <h2>Admin Login</h2>
+
+  <!-- LOGIN INPUTS -->
+  <input type="text" id="username" placeholder="Admin Username" />
+  <input type="password" id="password" placeholder="Password" />
+
+  <!-- LOGIN BUTTON -->
+  <button class="replit-btn" onclick="login()">
+    🔐 Login
+  </button>
+
+  <!-- 🔐 FORGOT PASSWORD LINK -->
+  <p style="margin-top:10px;">
+    <a href="#" onclick="showForgot()"></a>
+  </p>
+<!--Forgot Password?-->
+  <!-- 🔐 FORGOT PASSWORD BOX (HIDDEN) -->
+  <div id="forgotBox" style="display:none; margin-top:10px;">
+    <input type="text" id="fpUsername" placeholder="Admin Username" />
+    <input type="password" id="fpNewPassword" placeholder="New Password" />
+
+    <button class="replit-btn" onclick="resetPassword()">
+      Reset Password
+    </button>
+  </div>
+
+  <p class="api-note">🔒 Secure admin authentication</p>
+
+</div>
+
+<script src="../js/login.js"></script>
+</body>
+</html>

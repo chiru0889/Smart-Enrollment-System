@@ -1,0 +1,151 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.main-fade {
+  animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #0f766e, #064e3b);
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo {
+  padding: 24px;
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.menu {
+  padding: 20px;
+  flex: 1;
+}
+
+.menu-item {
+  display: block;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  border-radius: 12px;
+  color: white;
+  text-decoration: none;
+}
+
+.menu-item.active,
+.menu-item:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* Logout */
+.logout {
+  padding: 16px;
+}
+
+.logout button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  color: white;
+}
+
+/* Header Badge */
+.admin-badge {
+  background: white;
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #065f46;
+}
+
+/* KPI */
+.kpi-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.kpi-card h3 {
+  font-size: 28px;
+  margin-top: 6px;
+}
+
+.green { color: #10b981; }
+.red { color: #ef4444; }
+
+.kpi-icon {
+  padding: 16px;
+  border-radius: 14px;
+  font-size: 22px;
+}
+
+.kpi-icon.teal { background: #ecfdf5; color: #0f766e; }
+.kpi-icon.green { background: #ecfdf5; color: #10b981; }
+.kpi-icon.red { background: #fee2e2; color: #ef4444; }
+
+/* Cards */
+.chart-card,
+.recent-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Recent */
+.recent-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.recent-avatar {
+  width: 36px;
+  height: 36px;
+  background: #ecfdf5;
+  color: #0f766e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.recent-info {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.recent-date {
+  font-size: 12px;
+  color: #64748b;
+}

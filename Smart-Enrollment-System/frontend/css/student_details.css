@@ -1,0 +1,274 @@
+* {
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #0f766e, #064e3b);
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  padding: 20px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.nav-link {
+  display: block;
+  padding: 12px 20px;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.nav-link:hover {
+  background: rgba(255,255,255,0.2);
+  color: white;
+}
+
+/* HEADER */
+.header {
+  background: white;
+  padding: 20px 28px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-btn {
+  background: #f3f4f6;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-weight: bold;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.page-subtitle {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.download-btn {
+  border: 1px solid #0f766e;
+  color: #0f766e;
+  padding: 10px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  background: white;
+}
+
+/* CARDS */
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* INFO */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.info-row span {
+  color: #6b7280;
+}
+
+/* FINANCE */
+.finance-card {
+  background: #0f766e;
+  color: white;
+  padding: 24px;
+  border-radius: 16px;
+}
+
+.finance-card h3 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.finance-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 16px;
+}
+
+.finance-grid span {
+  font-size: 13px;
+  opacity: 0.8;
+}
+
+.finance-grid strong {
+  font-size: 22px;
+}
+
+.green { color: #22c55e; }
+.red { color: #ef4444; }
+
+/* TABLE */
+.emi-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.emi-table th {
+  text-align: left;
+  font-size: 13px;
+  color: #6b7280;
+  padding-bottom: 12px;
+}
+
+.emi-table td {
+  padding: 14px 0;
+  border-top: 1px solid #e5e7eb;
+  font-size: 14px;
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-paid {
+  background: #dcfce7;
+  color: #065f46;
+}
+
+.status-overdue {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .sidebar { display: none; }
+}
+
+
+/* PAY BUTTON */
+.pay-btn {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pay-btn:hover {
+  background: #059669;
+  transform: translateY(-1px);
+}
+
+.pay-btn:active {
+  transform: scale(0.95);
+}
+
+/* PAID BADGE */
+.paid-badge {
+  background: #dcfce7;
+  color: #065f46;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ===== PAY BUTTON ===== */
+.pay-btn {
+  background: #16a34a;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pay-btn:hover {
+  background: #15803d;
+  transform: translateY(-1px);
+}
+
+.pay-btn:active {
+  transform: scale(0.95);
+}
+
+/* ===== PAID LABEL ===== */
+.paid-label {
+  background: #dcfce7;
+  color: #166534;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+
+/* ===========================
+   UNDO BUTTON STYLE
+=========================== */
+.undo-btn {
+  background-color: #ef4444;   /* red */
+  color: #ffffff;              /* white text */
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.undo-btn:hover {
+  background-color: #dc2626;   /* darker red */
+  transform: scale(1.05);
+}
+
+.undo-btn:active {
+  transform: scale(0.95);
+}

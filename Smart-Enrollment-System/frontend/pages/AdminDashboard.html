@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard | Analogica</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+
+<body class="bg-slate-100 text-gray-800">
+
+<div class="flex min-h-screen">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">
+      <div class="logo-icon">A</div>
+      <div>
+        <h1>Analogica</h1>
+        <p>Student Management</p>
+      </div>
+    </div>
+
+    <nav class="menu">
+  <a href="/dashboard" class="menu-item active">Dashboard</a>
+  <a href="/pages/enquiries.html" class="menu-item">Enquiries</a>
+  <a href="/pages/enrollment.html" class="menu-item">Enrollments</a>
+  <a href="/pages/emi.html" class="menu-item">Monthly EMIs</a>
+  <a href="/pages/Overdue.html" class="menu-item">Overdues</a>
+  </nav>
+
+
+    <div class="logout">
+      <button onclick="logout()" class="logout-btn">
+  🚪 Logout
+</button>
+
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 p-8 main-fade">
+
+    <!-- HEADER -->
+    <div class="flex justify-between items-center mb-8">
+      <div>
+        <h1 class="text-3xl font-semibold">Admin Dashboard</h1>
+        <p class="text-slate-500">Enrollment performance overview</p>
+      </div>
+      <div class="admin-badge">Admin</div>
+    </div>
+
+    <!-- KPI CARDS -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+
+      <div class="kpi-card flex justify-between items-center">
+        <div>
+          <p>Total Enquiries</p>
+          <h3 id="totalEnquiries">0</h3>
+        </div>
+        <div class="kpi-icon teal">👥</div>
+      </div>
+
+      <div class="kpi-card flex justify-between items-center">
+        <div>
+          <p>Enrollments</p>
+          <h3 id="totalEnrollments" class="green">0</h3>
+        </div>
+        <div class="kpi-icon green">🎓</div>
+      </div>
+
+      <div class="kpi-card flex justify-between items-center">
+        <div>
+          <p>Dropouts</p>
+          <h3 id="totalDropouts" class="red">0</h3>
+        </div>
+        <div class="kpi-icon red">⚠️</div>
+      </div>
+
+    </div>
+
+    <!-- CONTENT GRID -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+      <!-- FUNNEL CHART -->
+      <div class="lg:col-span-2 chart-card">
+        <h3>Enquiry → Enrollment Funnel</h3>
+        <canvas id="enrollmentChart"></canvas>
+      </div>
+
+      <!-- RECENT ENROLLMENTS -->
+      <div class="recent-card">
+        <h3 class="mb-4">Recent Enrollments</h3>
+        <div id="recentList"></div>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<script src="../js/dashboard.js"></script>
+
+<script>
+const API = "http://127.0.0.1:5000/api";
+
+/* 🔒 CHECK LOGIN */
+fetch(`${API}/protected`, { credentials: "include" })
+  .then(res => {
+    if (!res.ok) {
+      window.location.href = "login.html";
+    }
+  });
+
+/* 🚪 LOGOUT */
+function logout() {
+  fetch(`${API}/logout`, { credentials: "include" })
+    .then(() => {
+      window.location.href = "login.html";
+    });
+}
+</script>
+
+</body>
+</html>

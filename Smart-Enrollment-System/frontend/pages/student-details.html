@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Profile | Analogica</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="../css/student_details.css">
+</head>
+
+<body class="h-screen flex overflow-hidden bg-gray-50">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="logo-icon">A</div>
+    <div>
+      <h1 class="text-lg font-bold">Analogica</h1>
+      <p class="text-xs opacity-80">Student Management</p>
+    </div>
+  </div>
+
+  <nav>
+    <a href="../pages/AdminDashboard.html" class="nav-link">Dashboard</a>
+    <a href="../pages/enquiries.html" class="nav-link">Enquiries</a>
+    <a href="../pages/enrollment.html" class="nav-link">Enrollments</a>
+    <a href="../pages/emi.html" class="nav-link">Monthly EMIs</a>
+    <a href="../pages/overdue.html" class="nav-link">Overdues</a>
+  </nav>
+</aside>
+
+<!-- MAIN -->
+<main class="flex-1 overflow-y-auto">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="flex items-center gap-4">
+      <button onclick="window.history.back()" class="back-btn">←</button>
+      <div>
+        <h1 id="studentTitle" class="page-title">Student Profile</h1>
+        <p class="page-subtitle">Student ID & Program details</p>
+      </div>
+    </div>
+
+    <button onclick="downloadStudentReport()" class="download-btn">
+  Download Full Report (PDF)
+</button>
+
+
+
+  </header>
+
+  <!-- CONTENT -->
+  <section class="p-6 grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- LEFT COLUMN -->
+    <div class="space-y-6">
+
+      <!-- STUDENT INFO -->
+      <div class="card">
+        <h3 class="card-title">Student Information</h3>
+
+        <div class="info-row">
+          <span>Email</span>
+          <strong id="studentName">Loading...</strong>
+        </div>
+
+        <div class="info-row">
+        <span>Phone</span>
+        <strong id="studentPhone">Loading...</strong>
+      </div>
+
+
+        
+
+        <div class="info-row">
+          <span>Program</span>
+          <strong id="studentProgram">Loading...</strong>
+        </div>
+
+        <div class="info-row">
+          <span>Joined</span>
+          <strong id="studentJoinDate">Loading...</strong>
+        </div>
+
+        <hr>
+
+        <div class="info-row">
+          <span>Payment Plan</span>
+          <strong id="studentPaymentPlan">-</strong>
+        </div>
+      </div>
+
+      <!-- FINANCIAL OVERVIEW -->
+      <div class="finance-card">
+        <h3>Financial Overview</h3>
+
+        <div class="finance-grid">
+          <div>
+            <span>Total Fee</span>
+            <strong id="statTotal">₹0</strong>
+          </div>
+
+          <div>
+            <span>Paid</span>
+            <strong id="statPaid" class="green">₹0</strong>
+          </div>
+
+          <div>
+            <span>Remaining</span>
+            <strong id="statRemaining" class="red">₹0</strong>
+          </div>
+
+          <div>
+            <span>Progress</span>
+            <strong id="statPercent">0%</strong>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="lg:col-span-2 card">
+      <h3 class="card-title">Installment Schedule</h3>
+
+      <table class="emi-table">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Amount</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th>Paid Date</th>
+          </tr>
+        </thead>
+        <tbody id="emiTableBody">
+          <!-- JS injects rows -->
+        </tbody>
+      </table>
+    </div>
+
+  </section>
+</main>
+
+<script src="../js/student_details.js"></script>
+</body>
+</html>

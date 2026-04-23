@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Overdue Payments - Analogica</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="../css/Overdue.css">
+</head>
+
+<body class="h-screen flex overflow-hidden">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="logo-icon">A</div>
+    <div>
+      <h1 class="text-lg font-bold">Analogica</h1>
+      <p class="text-xs opacity-80">Student Management</p>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a href="../pages/AdminDashboard.html" class="nav-link">📊 Dashboard</a>
+    <a href="../pages/enquiries.html" class="nav-link">📝 Enquiries</a>
+    <a href="../pages/enrollment.html" class="nav-link">🎓 Enrollments</a>
+    <a href="../pages/emi.html" class="nav-link">💳 Monthly EMIs</a>
+    <a href="../pages/Overdue.html" class="nav-link active">⚠️ Overdue Report</a>
+  </nav>
+
+  <div class="sidebar-footer">
+    <div class="user-box">
+      <div class="user-avatar">C</div>
+      <div>
+        <p class="user-name">admin</p>
+        <p class="user-email">admin123@gmail.com</p>
+      </div>
+    </div>
+    <div class="logout-section">
+  <button id="logoutBtn" class="logout-btn">
+    🚪 Logout
+  </button>
+</div>
+</aside>
+
+<!-- MAIN -->
+<main class="flex-1 flex flex-col h-full bg-gray-50 overflow-hidden">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div>
+      <h1 class="page-title">Late Payments</h1>
+      <p class="page-subtitle">Calculate fines and track missed installments.</p>
+    </div>
+
+    <div class="header-actions">
+      <div class="summary-box">
+        <span class="summary-label">Total Due:</span>
+        <span id="totalDueDisplay" class="summary-val">₹0</span>
+      </div>
+
+      <div class="summary-box">
+        <span class="summary-label">Total Fines:</span>
+        <span id="totalFinesDisplay" class="summary-val red-text">₹0</span>
+      </div>
+
+      <div class="summary-box">
+        <span class="summary-label">Total Amount:</span>
+        <span id="totalAmountDisplay" class="summary-val blue-text">₹0</span>
+      </div>
+
+      <button onclick="applyAllFines()" class="add-btn">Add All Fines</button>
+      <button onclick="downloadReport()" 
+        class="px-4 py-2 rounded-lg shadow-md 
+               bg-slate-700 hover:bg-slate-800 
+               text-white font-medium 
+               transition duration-200 ease-in-out">
+  📥 Download Report
+</button>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <div class="content-scroll">
+    <div class="table-container">
+      <table class="emi-table">
+        <thead>
+          <tr>
+            <th>Student</th>
+            <th>Program</th>
+            <th>Joined</th>
+            <th>Due Date</th>
+            <th>Amount</th>
+            <th>Days Late</th>
+            <th>Fine</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="overdueTableBody">
+          <!-- JS injects rows -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<script src="../js/Overdue.js"></script>
+</body>
+</html>
